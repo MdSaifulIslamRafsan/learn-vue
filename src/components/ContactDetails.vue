@@ -1,23 +1,34 @@
 <template>
    <div class="card">
-    <h1>Name: {{name}}</h1>
-    <p>Number: {{ number }} </p>
-    <p>website: www.lorem.com</p>
+    <h1>Name: {{contact.name}}</h1>
+    <p>Number: {{ contact.phone }} </p>
+    <p>Email: {{contact.email}}</p>
    </div>
 
 </template>
 
 <script>
 export default {
+    // props: ["contact"],
+    props: {
+      contact: {
+        type: Object,
+        required: true,
+        default: () => ({
+          name: '',
+          phone: '',
+          email: ''
+        })
+      }
+    },
+
     setup() {
         return {
-            name: "test",
-            number: "123",
         }
     },
 }
 </script>
-
+// when we are scoped use style element it's means this css file only this component work
 <style scoped>
     .card{
         border: 1px solid black;
