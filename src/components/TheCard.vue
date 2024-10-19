@@ -12,6 +12,14 @@
              
            </slot>
         </div>
+        <div class="the_card_footer">
+            <slot name="footer">
+               
+               <!-- Default footer content goes here -->
+               Default footer
+            </slot>
+
+        </div>
     </div>
 </template>
 <script>
@@ -36,5 +44,13 @@ export default {
     }
     .the-card-body{
         padding: 10px;
+    }
+    .the_card_footer{
+        background-color: rgb(75, 73, 73);
+        padding: 10px;
+        color: white;
+        font-weight: bold;
+        border-top: 1px solid rebeccapurple;
+ 
     }
 </style>

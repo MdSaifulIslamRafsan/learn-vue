@@ -12,7 +12,8 @@
     />
     <!--  Component Slots -->
     <TheCard cardTitle="About me">
-      <p>
+      <template v-slot:default>
+        <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis
         libero eget neque consequat, ac pulvinar enim congue. Nulla facilisi.
         Donec vel velit et nunc lobortis fermentum. Sed et tellus non metus
@@ -41,8 +42,18 @@
           >View my Twitter profile</a
         >
       </p>
+      </template>
+
+      <template v-slot:footer>
+        <a class="text-center block underline text-blue-500" href="">learn more</a>
+      </template>
+      
     </TheCard>
     <TheCard cardTitle="iphone 12 pro max">
+
+
+    <template #default>
+
       <img class="h-60 mx-auto"
         src="https://adminapi.applegadgetsbd.com/storage/media/large/2445-37576.jpg"
         alt="iphone 12 pro max"
@@ -52,6 +63,15 @@
         was unveiled on September 14, 2020, and is the third iPhone in the series
         since the iPhone 11. The smartphone features a 6.1-inch Super Retina XDR OLED
         display, a 12MP (f/1.7) telephoto camera with O </p>
+    </template>
+
+    <template #footer>
+     <div class="flex justify-center">
+         <button class="text-center py-2 mx-4 px-5 bg-blue-500" href="">buy now</button>
+      <button class="text-center py-2 mx-4 px-5 bg-blue-500" href="">Add to card</button>
+     </div>
+    </template>
+
     </TheCard>
     <TheCard cardTitle="services">
       <ul>
