@@ -102,14 +102,26 @@
     </TheCard>
       <Count></Count>
   </div>
+    <div class="grid lg:grid-cols-2">
+        <ProductCard v-for="(product) in products" :key="product.id" :product="product" @buy-now-click="buyNow" @add-to-card-click="addNow"></ProductCard> 
+    </div>
 </template>
 
 <script>
 import ContactDetails from "./components/ContactDetails.vue";
 import Count from './components/Count.vue';
+import ProductCard from './components/ProductCard.vue';
 import TheCard from "./components/TheCard.vue";
 export default {
-  components: { ContactDetails, TheCard, Count },
+  components: { ContactDetails, TheCard, Count, ProductCard },
+  methods:{
+      buyNow(product) {
+        console.log("Buy Now clicked!", product);
+      },
+      addNow(product){
+        console.log("Add to Card clicked!", product);
+      }
+  },
   setup() {
     return {
       msg: "Hello Vue.js!",
@@ -146,8 +158,25 @@ export default {
           email: "alicejohnson@example.com",
         },
       ],
+      products: [
+        {
+          id: 1,
+          name: "iPhone 12 Pro Max",
+          price: 10000,
+          description: "The iPhone 12 Pro Max is a smartphone designed and marketed by Apple Inc. It was unveiled on September 14, 2020, and is the third iPhone in the series since the iPhone 11.",
+          image: "https://adminapi.applegadgetsbd.com/storage/media/large/2445-37576.jpg",
+        },
+        {
+          id: 2,
+          name: "Samsung Galaxy S21 Ultra",
+          price: 9000,
+          description: "The Samsung Galaxy S21 Ultra is a smartphone developed by Samsung Electronics. It was announced on September 12, 2020, and is the fourth Samsung",
+          image: "https://images.samsung.com/is/image/samsung/p6pim/levant/2401/gallery/levant-galaxy-s24-s928-sm-s928bztqmea-thumb-539426017"
+        }
+
+      ]
+      
     };
   },
-  methods: {},
 };
 </script>
