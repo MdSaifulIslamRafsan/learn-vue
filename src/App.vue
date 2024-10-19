@@ -80,14 +80,16 @@
     </TheCard>
     <TheCard cardTitle="task">
     </TheCard>
+      <Count></Count>
   </div>
 </template>
 
 <script>
 import ContactDetails from "./components/ContactDetails.vue";
+import Count from './components/Count.vue';
 import TheCard from "./components/TheCard.vue";
 export default {
-  components: { ContactDetails, TheCard },
+  components: { ContactDetails, TheCard, Count },
   setup() {
     return {
       msg: "Hello Vue.js!",
