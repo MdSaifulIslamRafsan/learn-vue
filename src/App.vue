@@ -105,6 +105,8 @@
     <div class="grid lg:grid-cols-2">
         <ProductCard v-for="(product) in products" :key="product.id" :product="product" @buy-now-click="buyNow" @add-to-card-click="addNow" @toggle-favourite="toggleFavourite"></ProductCard> 
     </div>
+    <p>{{myRating}}</p>
+    <the-rating v-model="myRating"></the-rating>
 </template>
 
 <script>
@@ -113,8 +115,9 @@ import ContactDetails from "./components/ContactDetails.vue";
 import Count from './components/Count.vue';
 import ProductCard from './components/ProductCard.vue';
 import TheCard from "./components/TheCard.vue";
+import TheRating from './components/TheRating.vue';
 export default {
-  components: { ContactDetails, TheCard, Count, ProductCard },
+  components: { ContactDetails, TheCard, Count, ProductCard, TheRating },
   methods:{
       buyNow(product) {
         console.log("Buy Now clicked!", product);
@@ -131,6 +134,7 @@ export default {
   },
   setup() {
     return {
+      myRating: 2,
       msg: "Hello Vue.js!",
       contact1: {
         name: "John Doe",
