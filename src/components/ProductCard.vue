@@ -1,7 +1,9 @@
 <template>
   <div class="the-card">
-    <div class="the-card-title">
+    <div class="the-card-title flex justify-between">
       {{ product.name }}
+      <p v-if="product.addToFavourite" @click="handleToggleFavourite">star</p>
+      <p v-else @click="handleToggleFavourite">unstar</p>
     </div>
     <div class="the-card-body text-center">
       <img class="h-60 mx-auto" :src="product.image" alt="iphone 12 pro max" />
@@ -47,7 +49,14 @@ export default {
         return false;
       }
       return true;
-    }
+    },
+    "toggle-favourite": function (data) {
+      if (!data) { 
+         console.error("Invalid product provided for toggle-favourite event");
+        return false; 
+        } 
+      return true;
+    },
   },
   methods: {
     handleBuyClick() {
@@ -56,6 +65,9 @@ export default {
     handleAddClick() {
       this.$emit("add-to-card-click", this.product);
     },
+    handleToggleFavourite(){
+      this.$emit("toggle-favourite", this.product);
+    }
   },
 };
 </script>

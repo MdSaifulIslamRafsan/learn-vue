@@ -103,11 +103,12 @@
       <Count></Count>
   </div>
     <div class="grid lg:grid-cols-2">
-        <ProductCard v-for="(product) in products" :key="product.id" :product="product" @buy-now-click="buyNow" @add-to-card-click="addNow"></ProductCard> 
+        <ProductCard v-for="(product) in products" :key="product.id" :product="product" @buy-now-click="buyNow" @add-to-card-click="addNow" @toggle-favourite="toggleFavourite"></ProductCard> 
     </div>
 </template>
 
 <script>
+import { ref } from 'vue';
 import ContactDetails from "./components/ContactDetails.vue";
 import Count from './components/Count.vue';
 import ProductCard from './components/ProductCard.vue';
@@ -120,7 +121,13 @@ export default {
       },
       addNow(product){
         console.log("Add to Card clicked!", product);
-      }
+      },
+     toggleFavourite(product){
+      console.log(product);
+      
+      product.addToFavourite = !product.addToFavourite;
+     }
+
   },
   setup() {
     return {
@@ -158,25 +165,37 @@ export default {
           email: "alicejohnson@example.com",
         },
       ],
-      products: [
+      products: ref([
         {
           id: 1,
           name: "iPhone 12 Pro Max",
           price: 10000,
           description: "The iPhone 12 Pro Max is a smartphone designed and marketed by Apple Inc. It was unveiled on September 14, 2020, and is the third iPhone in the series since the iPhone 11.",
           image: "https://adminapi.applegadgetsbd.com/storage/media/large/2445-37576.jpg",
+          addToFavourite: true,
         },
         {
           id: 2,
           name: "Samsung Galaxy S21 Ultra",
           price: 9000,
           description: "The Samsung Galaxy S21 Ultra is a smartphone developed by Samsung Electronics. It was announced on September 12, 2020, and is the fourth Samsung",
-          image: "https://images.samsung.com/is/image/samsung/p6pim/levant/2401/gallery/levant-galaxy-s24-s928-sm-s928bztqmea-thumb-539426017"
+          image: "https://images.samsung.com/is/image/samsung/p6pim/levant/2401/gallery/levant-galaxy-s24-s928-sm-s928bztqmea-thumb-539426017",
+           addToFavourite: false,
+        },
+        {
+          id: 3,
+          name: "Samsung Galaxy S21 Ultra",
+          price: 9000,
+          description: "The Samsung Galaxy S21 Ultra is a smartphone developed by Samsung Electronics. It was announced on September 12, 2020, and is the fourth Samsung",
+          image: "https://images.samsung.com/is/image/samsung/p6pim/levant/2401/gallery/levant-galaxy-s24-s928-sm-s928bztqmea-thumb-539426017",
+           addToFavourite: true,
         }
 
-      ]
+      ])
       
     };
   },
 };
 </script>
+
+
