@@ -134,7 +134,7 @@ export default {
   },
   setup() {
     return {
-      myRating: 2,
+      myRating: ref(2),
       msg: "Hello Vue.js!",
       contact1: {
         name: "John Doe",

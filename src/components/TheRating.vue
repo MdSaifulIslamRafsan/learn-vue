@@ -1,8 +1,9 @@
 <template lang="">
     <div>
         {{message}}
-        <div class="flex" v-for="index in 5" :key="index">
-            <p class="inline" v-if="modelValue >= index">*</p>
+        <div @click="handleClick(index)" class="flex" v-for="index in 5" :key="index">
+            <p class="inline text-5xl" v-if="modelValue >= index">*</p>
+            <p class="inline text-5xl" v-if="modelValue < index">#</p>
         </div>
 
 
@@ -20,6 +21,12 @@ export default {
     emits:[
         'update:modelValue'
     ],
+    methods:{
+        handleClick(index){
+            
+            this.$emit('update:modelValue', index);
+        }
+     },
     setup: ()=>{
         return {
             message : "Welcome",
