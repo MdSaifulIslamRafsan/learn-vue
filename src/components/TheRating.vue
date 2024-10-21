@@ -23,7 +23,6 @@ export default {
     ],
     methods:{
         handleClick(index){
-            
             this.$emit('update:modelValue', index);
         }
      },

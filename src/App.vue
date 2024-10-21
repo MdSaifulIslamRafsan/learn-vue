@@ -107,6 +107,7 @@
     </div>
     <p>{{myRating}}</p>
     <the-rating v-model="myRating"></the-rating>
+   <CreditCard></CreditCard>
 </template>
 
 <script>
@@ -116,8 +117,9 @@ import Count from './components/Count.vue';
 import ProductCard from './components/ProductCard.vue';
 import TheCard from "./components/TheCard.vue";
 import TheRating from './components/TheRating.vue';
+import CreditCard from './components/CreditCard.vue';
 export default {
-  components: { ContactDetails, TheCard, Count, ProductCard, TheRating },
+  components: { ContactDetails, TheCard, Count, ProductCard, TheRating, CreditCard },
   methods:{
       buyNow(product) {
         console.log("Buy Now clicked!", product);
