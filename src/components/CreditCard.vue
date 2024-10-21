@@ -6,60 +6,82 @@
             Name on Card
           </label>
           <input class="border-2" @input="handleCardHolderName" :value="cardHolderName" type="text" />
-          <input class="border-2" type="text" :value="cardNumber" @input="handleCardNumber"  />
-          <input class="border-2" type="text" :value="expirationDate" @input="handleExpirationDate" />
-          <input class="border-2" type="text" :value="cvv" @input="handleCvv" />
+          <br> <br>
+          <label>
+            Card Number
+          </label>
+          <input class="border-2" type="text" :value="cardNumber" @input="handleCardNumber" maxlength="16" />
+          <br> <br>
+         <div class="grid grid-cols-2 items-center gap-4">
+           <div>
+            <label>
+            Expiration Date (MM/YY)
+          </label>
+          <input class="border-2" type="text" :value="expirationDate" @input="handleExpirationDate" maxlength="5" />
+           </div>
+           <div>
+            <label>
+                CVV
+            </label>
+            <br>
+          
+          <input class="border-2" type="text" :value="cvv" @input="handleCvv" maxlength="3" />
+           </div>
+         </div>
         </div>
     </div>
 </template>
+
 <script>
 export default {
-    props: {
-        cardHolderName: {
-            type: String,
-            default : "",
-        },
-        cardNumber: {
-            type: Number,
-            default : "",
-        },
-        expirationDate: {
-            type: String,
-            default : "",
-        },
-        cvv: {
-            type: String,
-            default : "",
-        }
+  props: {
+    cardHolderName: {
+      type: String,
+      default: "",
     },
-    methods: {
-        handleCardHolderName(e){
-           this.$emit("update:cardHolderName", e.target.value);
-        },
-        handleCardNumber(e){
-           this.$emit("update:cardNumber", e.target.value);
-        },
-        handleExpirationDate(e){
-           this.$emit("update:expirationDate", e.target.value);
-        },
-        handleCvv(e){
-           this.$emit("update:cvv", e.target.value);
-        },
+    cardNumber: {
+      type: String, // Changed to String to support leading zeros
+      default: "",
     },
-   
-}
+    expirationDate: {
+      type: String,
+      default: "",
+    },
+    cvv: {
+      type: String,
+      default: "",
+    },
+  },
+  methods: {
+    handleCardHolderName(e) {
+      this.$emit("update:cardHolderName", e.target.value);
+    },
+    handleCardNumber(e) {
+      this.$emit("update:cardNumber", e.target.value.replace(/\D/g, "")); // Only digits
+    },
+    handleExpirationDate(e) {
+      let value = e.target.value.replace(/\D/g, ""); // Only digits
+
+      if (value.length >= 2) {
+        value = value.slice(0, 2) + "/" + value.slice(2, 4);
+      }
+
+      this.$emit("update:expirationDate", value);
+    },
+    handleCvv(e) {
+      this.$emit("update:cvv", e.target.value.replace(/\D/g, "").slice(0, 3)); // Limit to 3 digits
+    },
+  },
+};
 </script>
-<style  scoped>
 
-
-    
-   .card {
-    width: 300px;
-    margin: 0 auto;
-    border: 1px solid #ccc;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    min-height: 300px;
-    }
-  
+<style scoped>
+.card {
+  width: 500px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-height: 300px;
+}
 </style>
