@@ -131,6 +131,7 @@
       {{ expirationDate }} cvc : {{ cvv }}
     </p>
   </div>
+  <the-comment v-model="myComment" class="border-red-500 border-4" buttonText="submit"></the-comment>
 </template>
 
 <script>
@@ -141,6 +142,7 @@ import ProductCard from "./components/ProductCard.vue";
 import TheCard from "./components/TheCard.vue";
 import TheRating from "./components/TheRating.vue";
 import CreditCard from "./components/CreditCard.vue";
+import TheComment from './components/TheComment.vue';
 export default {
   components: {
     ContactDetails,
@@ -149,6 +151,7 @@ export default {
     ProductCard,
     TheRating,
     CreditCard,
+    TheComment,
   },
   methods: {
     buyNow(product) {
@@ -163,6 +166,7 @@ export default {
   },
   setup() {
     return {
+      myComment: ref("this is a comment"),
       myRating: ref(2),
       msg: "Hello Vue.js!",
       cardNumber: ref(""),

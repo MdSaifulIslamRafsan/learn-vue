@@ -40,7 +40,7 @@ export default {
       default: "",
     },
     cardNumber: {
-      type: String, // Changed to String to support leading zeros
+      type: String,
       default: "",
     },
     expirationDate: {
