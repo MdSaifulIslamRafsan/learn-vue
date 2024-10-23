@@ -24,7 +24,7 @@
 <script>
 export default {
     mounted(){
-        console.log(this.$slots.footer)
+        // console.log(this.$slots.footer)
     },
     props: ["cardTitle"],
     setup() {

@@ -131,8 +131,12 @@
       {{ expirationDate }} cvc : {{ cvv }}
     </p>
   </div>
-  <the-comment v-model="myComment" class="border-red-500 border-4" buttonText="submit"></the-comment>
+ 
+    <button @click="hide = true" class="bg-green-500 text-white rounded-md py-2 px-5">hide</button>
+
+  <the-comment v-if="!hide" v-model="myComment" class="border-red-500 border-4" buttonText="submit"></the-comment>
 </template>
+
 
 <script>
 import { ref } from "vue";
@@ -166,6 +170,7 @@ export default {
   },
   setup() {
     return {
+      hide: ref(false),
       myComment: ref("this is a comment"),
       myRating: ref(2),
       msg: "Hello Vue.js!",

@@ -32,27 +32,27 @@
 <script>
 export default {
   mounted() {
-    console.log("mounted", this.product);
+    // console.log("mounted", this.product);
   },
   props: { product: { type: Object, default: () => ({}) } },
   emits: {
     "buy-now-click": function (data) {
       if (!data) {
-        console.error("Invalid data provided for buy-now-click event");
+        // console.error("Invalid data provided for buy-now-click event");
         return false;
       }
      return true;
     },
     "add-to-card-click": function (data) { 
         if (!data) {
-        console.error("Invalid data provided for add-to-card-click event");
+        // console.error("Invalid data provided for add-to-card-click event");
         return false;
       }
       return true;
     },
     "toggle-favourite": function (data) {
       if (!data) { 
-         console.error("Invalid product provided for toggle-favourite event");
+        //  console.error("Invalid product provided for toggle-favourite event");
         return false; 
         } 
       return true;
