@@ -6,6 +6,7 @@
     <ContactDetails :contact="contact3" />
     <!-- Add more contacts -->
     <ContactDetails
+    ref="contact"
       v-for="(contact, index) in contacts"
       :key="index"
       :contact="contact"
@@ -44,7 +45,7 @@
         </p>
       </template>
 
-      <template v-slot:footer>
+      <template  v-slot:footer>
         <a class="text-center block underline text-blue-500" href=""
           >learn more</a
         >
@@ -166,10 +167,11 @@
     </button>
   </the-dialog>
 
-  <the-notification v-for="(message, index) in notification" :key="index" :message="message"></the-notification> 
+  <the-notification  v-for="(message, index) in notification" :key="index" :message="message"></the-notification> 
 
   <button class="p-4 bg-gray-200" @click="handleNotification"> Show Notification</button>
   <tabs></tabs>
+  <input type="text" ref="referencesInput" name="referencesInput" />
 </template>
 
 
@@ -198,6 +200,10 @@ export default {
     TheNotification,
     Tabs,
   },
+  mounted(){
+    console.log(this.$refs.contact) 
+    console.log(this.$refs.referencesInput) 
+} ,
   methods: {
 
     handleNotification() {
