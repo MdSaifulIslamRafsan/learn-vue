@@ -9,26 +9,37 @@
     >
       {{ tab }}
     </button>
-    <!-- <Login v-if="activeTab === 'Login'"></Login>
-  <Register v-if="activeTab === 'Register'"></Register> -->
-    <keep-alive>
-      <component :is="activeTab"></component>
-    </keep-alive>
-  </div>
+</div>
+<!-- <Login v-if="activeTab === 'Login'"></Login>
+<Register v-if="activeTab === 'Register'"></Register> -->
+<keep-alive>
+  <component :is="activeTab"></component>
+</keep-alive>
 </template>
 <script>
 import { ref } from "vue";
 import Login from "./Login.vue";
 import Register from "./Register.vue";
+import Contact from "./Contact.vue";
 
 export default {
-  components: { Login, Register },
+  components: { Login, Register, Contact },
   setup: () => {
     return {
-      tabs: ["Login", "Register"],
+      tabs: ["Login", "Register", "Contact"],
       activeTab: ref("Login"),
+      name: ref("md saiful islam"),
+      age: ref(22),
+      email: ref("md@example.com")
     };
   },
+  provide(){
+    return {
+      name: this.name,
+      age: this.age,
+      email: this.email
+    }
+  }
 };
 </script>
 <style>
