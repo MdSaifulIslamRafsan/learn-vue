@@ -2,6 +2,7 @@
     <form @submit="handleComment" >
         <textarea v-bind="$attrs" name="comments" placeholder="Enter your comment" @input="getCommentInputValue" rows="5" cols="35" class="border-2 rounded-lg" id="comments"></textarea>
         <button class="bg-slate-500 px-5 py-2 rounded-lg ml-6" @click="submitComment">{{buttonText}}</button>
+        <button class="bg-slate-500 px-5 py-2 rounded-lg ml-6" @click="$emit('showDialog')">show dialog</button>
     </form>
 </template>
 <script>

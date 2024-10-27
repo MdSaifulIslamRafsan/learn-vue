@@ -119,22 +119,55 @@
   <p>{{ myRating }}</p>
   <the-rating v-model="myRating"></the-rating>
   <div>
-    <CreditCard v-model:cardHolderName="cardHolderName" v-model:cardNumber="cardNumber" v-model:expirationDate="expirationDate" v-model:cvv="cvv"> </CreditCard>
+    <CreditCard
+      v-model:cardHolderName="cardHolderName"
+      v-model:cardNumber="cardNumber"
+      v-model:expirationDate="expirationDate"
+      v-model:cvv="cvv"
+    >
+    </CreditCard>
     <br />
     <br />
     <hr />
     <hr />
     <hr />
     <p>
-      name : {{ cardHolderName }} card number :
-      {{ cardNumber }} expiration date :
-      {{ expirationDate }} cvc : {{ cvv }}
+      name : {{ cardHolderName }} card number : {{ cardNumber }} expiration date
+      : {{ expirationDate }} cvc : {{ cvv }}
     </p>
   </div>
- 
-    <button @click="hide = true" class="bg-green-500 text-white rounded-md py-2 px-5">hide</button>
 
-  <the-comment v-if="!hide" v-model="myComment" class="border-red-500 border-4" buttonText="submit"></the-comment>
+  <button
+    @click="hide = true"
+    class="bg-green-500 text-white rounded-md py-2 px-5"
+  >
+    hide
+  </button>
+
+  <the-comment
+    v-if="!hide"
+    @showDialog="handleDialog"
+    v-model="myComment"
+    class="border-red-500 border-4"
+    buttonText="submit"
+  ></the-comment>
+  <the-dialog v-if="showDialog1" title="are you sure">
+    <button
+      class="px-5 py-2 border-2 rounded-lg ml-4 border-green-500"
+      @click="showDialog1 = false"
+    >
+      Yes
+    </button>
+    <button
+      class="px-5 py-2 border-2 rounded-lg ml-4 border-green-500"
+      @click="showDialog1 = false"
+    >
+      No
+    </button>
+  </the-dialog>
+  <the-notification v-for="(message, index) in notification" :key="index" :message="message"></the-notification>
+  <button class="p-4 bg-gray-200" @click="handleNotification"> Show Notification</button>
+  
 </template>
 
 
@@ -146,7 +179,9 @@ import ProductCard from "./components/ProductCard.vue";
 import TheCard from "./components/TheCard.vue";
 import TheRating from "./components/TheRating.vue";
 import CreditCard from "./components/CreditCard.vue";
-import TheComment from './components/TheComment.vue';
+import TheComment from "./components/TheComment.vue";
+import TheDialog from "./components/TheDialog.vue";
+import TheNotification from './components/TheNotification.vue';
 export default {
   components: {
     ContactDetails,
@@ -156,8 +191,21 @@ export default {
     TheRating,
     CreditCard,
     TheComment,
+    TheDialog,
+    TheNotification,
   },
   methods: {
+
+    handleNotification() {
+      this.notification.push("this is an notification");
+      console.log(" this is an notification");
+      setTimeout(() => {
+        this.notification.shift();
+      }, 3000);
+    },
+    handleDialog() {
+      this.showDialog1 = true;
+    },
     buyNow(product) {
       console.log("Buy Now clicked!", product);
     },
@@ -170,13 +218,15 @@ export default {
   },
   setup() {
     return {
+      notification: ref([]),
       hide: ref(false),
+      showDialog1: ref(false),
       myComment: ref("this is a comment"),
       myRating: ref(2),
       msg: "Hello Vue.js!",
       cardNumber: ref(""),
       cardHolderName: ref(""),
-      expirationDate:ref(""),
+      expirationDate: ref(""),
       cvv: ref(""),
       contact1: {
         name: "John Doe",
