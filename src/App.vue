@@ -165,9 +165,11 @@
       No
     </button>
   </the-dialog>
-  <the-notification v-for="(message, index) in notification" :key="index" :message="message"></the-notification>
+
+  <the-notification v-for="(message, index) in notification" :key="index" :message="message"></the-notification> 
+
   <button class="p-4 bg-gray-200" @click="handleNotification"> Show Notification</button>
-  
+  <tabs></tabs>
 </template>
 
 
@@ -182,6 +184,7 @@ import CreditCard from "./components/CreditCard.vue";
 import TheComment from "./components/TheComment.vue";
 import TheDialog from "./components/TheDialog.vue";
 import TheNotification from './components/TheNotification.vue';
+import Tabs from './components/Tabs.vue';
 export default {
   components: {
     ContactDetails,
@@ -193,6 +196,7 @@ export default {
     TheComment,
     TheDialog,
     TheNotification,
+    Tabs,
   },
   methods: {
 
