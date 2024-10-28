@@ -172,6 +172,7 @@
   <button class="p-4 bg-gray-200" @click="handleNotification"> Show Notification</button>
   <tabs></tabs>
   <input type="text" ref="referencesInput" name="referencesInput" />
+  <the-form></the-form>
 </template>
 
 
@@ -187,6 +188,7 @@ import TheComment from "./components/TheComment.vue";
 import TheDialog from "./components/TheDialog.vue";
 import TheNotification from './components/TheNotification.vue';
 import Tabs from './components/Tabs.vue';
+import TheForm from './components/TheForm.vue';
 export default {
   components: {
     ContactDetails,
@@ -199,6 +201,7 @@ export default {
     TheDialog,
     TheNotification,
     Tabs,
+    TheForm,
   },
   mounted(){
     console.log(this.$refs.contact) 
