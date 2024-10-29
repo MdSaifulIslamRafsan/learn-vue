@@ -36,6 +36,30 @@
              <option value="English">English</option>
 
             </select>
+            
+          <br>
+          <br>
+
+          <select multiple class="border" v-model="formData.skills">
+             <option selected disabled value="" >skills</option>
+             <option value="Python">Python</option>
+             <option value="Java">Java</option>
+             <option value="JavaScript">JavaScript</option>
+             <option value="C++">C++</option>
+             <option value="Ruby">Ruby</option>
+             <option value="Go">Go</option>
+             <option value="Swift">Swift</option>
+             <option value="Kotlin">Kotlin</option>
+             <option value="Rust">Rust</option>
+             <option value="C#">C#</option>
+             <option value="SQL">SQL</option>
+             <option value="NoSQL">NoSQL</option>
+             <option value="AI">AI</option>
+             <option value="ML">ML</option>
+             <option value="DL">DL</option>
+             <option value="NLP">NLP</option>
+          </select>
+
           <br>
           <br>
         <!-- {{ formData }} -->
@@ -55,6 +79,7 @@ export default {
                 comment: '',
                 gender: '',
                 language: '',
+                skills: [],
               }
         }
     }
