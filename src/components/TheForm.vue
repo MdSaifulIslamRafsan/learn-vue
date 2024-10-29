@@ -30,6 +30,14 @@
           </label>
           <br>
           <br>
+            <select class="border-2" v-model="formData.language">
+             <option selected disabled value="">language</option>
+             <option value="Bangla">Bangla</option>
+             <option value="English">English</option>
+
+            </select>
+          <br>
+          <br>
         <!-- {{ formData }} -->
           <div v-for="(value, key) in formData" :key="key">
                 <p>{{ key }} : {{ value }}</p>
@@ -46,7 +54,8 @@ export default {
                 FullName: '',
                 comment: '',
                 gender: '',
-            }
+                language: '',
+              }
         }
     }
 }
