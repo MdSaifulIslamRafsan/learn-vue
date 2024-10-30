@@ -62,6 +62,23 @@
 
           <br>
           <br>
+            <label for="terms">
+              <input v-model="formData.agreed" type="checkbox" name="terms" id="terms">
+              I agree with the terms and conditions.
+            </label>
+            <br>
+            <label for="">
+               <input v-model="formData.socialMedia" type="checkbox" value="facebook"> facebook
+            </label>
+            <label>
+              <input v-model="formData.socialMedia" type="checkbox" value="google"> google
+            </label>
+            <label>
+              <input v-model="formData.socialMedia" value="twitter" type="checkbox"> twitter
+            </label>
+
+          <br>
+          <br>
         <!-- {{ formData }} -->
           <div v-for="(value, key) in formData" :key="key">
                 <p>{{ key }} : {{ value }}</p>
@@ -80,6 +97,8 @@ export default {
                 gender: '',
                 language: '',
                 skills: [],
+                agreed: false,
+                socialMedia: [],
               }
         }
     }
